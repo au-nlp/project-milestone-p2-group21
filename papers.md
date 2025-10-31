@@ -6,3 +6,8 @@
   - Also has a dataset
 - xComet: https://arxiv.org/pdf/2310.10482
   - Model for evaluating translation models
+- Cantonese papers:
+  - CantonMT: https://aclanthology.org/2024.amta-presentations.9.pdf
+  - Unsupervised Cantonese <-> mandarin: https://arxiv.org/pdf/2301.03971
+  - Also this one: https://ojs.aaai.org/index.php/AAAI/article/view/21677/21426
+
