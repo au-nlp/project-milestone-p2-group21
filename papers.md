@@ -11,3 +11,11 @@
   - Unsupervised Cantonese <-> mandarin: https://arxiv.org/pdf/2301.03971
   - Also this one: https://ojs.aaai.org/index.php/AAAI/article/view/21677/21426
 
+# Models
+- NLLB-200: https://huggingface.co/facebook/nllb-200-3.3B
+- MADLAD-400: https://huggingface.co/google/madlad400-3b-mt
+- Marco-MT-Algharb: https://huggingface.co/AIDC-AI/Marco-MT-Algharb
+- "classic" translators: https://pypi.org/project/translators/
+
+Find common mistakes in different chinese models
+try to finetune
