@@ -21,8 +21,8 @@ for item in json_data:
 
 model_output = model.predict(data, batch_size=8, gpus=0)
 
-json.dump(model_output.scores, open("xcomet_xl_google_yue_chinese.json", "w", encoding="utf-8"), ensure_ascii=False, indent=4)
-
 print(model_output.scores)
 print(model_output.system_scores)
 print(model_output.metadata)
+
+json.dump(model_output.scores, open("xcomet_xl_google_yue_chinese.json", "w", encoding="utf-8"), ensure_ascii=False, indent=4)
