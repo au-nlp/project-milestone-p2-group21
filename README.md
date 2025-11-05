@@ -3,8 +3,11 @@
 # ?Cantonese? ?ML? ?Title?
 ## Abstract
 ## Potential extra datasets
-For future finetuning, basede on the findings of \ref{dare2023unsupervisedmandarincantonesemachinetranslation}, there's large potential in giving models more data, even unlabled, as models have usually been exposed to very little Cantonese data. They use a corpus consisting of Wikipedia articles and a cleaned scrape of Instagram and Youtube subtitles, and have compiled this into a dataset that might be useful in our project too. 
+For future finetuning, basede on the findings of \ref{dare2023unsupervisedmandarincantonesemachinetranslation}, there's large potential in giving models more data, even unlabled, as models have usually been exposed to very little Cantonese data. They use a corpus consisting of Wikipedia articles and a cleaned scrape of Instagram and Youtube subtitles, and have compiled this into a dataset that might be useful in our project too.
 ## Methods
+**TODO: Write full text not bullet points**
+- Benchmarking of existing models and analsis of areas where these show weak performance
+- Finetuning models with additional data from SMOL
 ## Timeline
 ## Organization
 ## References
