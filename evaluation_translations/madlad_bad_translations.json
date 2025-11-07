@@ -1,0 +1,135 @@
+[
+    {
+        "original": "Do you want wild river fish, a calm lake fish, or a stock pond farm-raised variety?",
+        "original_yue": "\u4f60\u60f3\u8981\u91ce\u751f\u6cb3\u9b5a\u3001\u6de1\u6c34\u6e56\u9b5a\u5b9a\u4fc2\u990a\u6b96\u6c60\u5858\u5605\u9b5a\u5462\uff1f",
+        "cantonese": "You want wild river fish, freshwater lake fish, to be farmed fish?",
+        "bleurt": -0.4431242048740387,
+        "canto_percent": 0.045454545454545456
+    },
+    {
+        "original": "Tender cabbage, fluffy potato gnocchi, and smoky sausage swim in a creamy, cheesy beer soup base.",
+        "original_yue": "\u5ae9\u5ae9\u5605\u6930\u83dc\uff0c\u9b06\u8edf\u5605\u85af\u4ed4\u7389\u68cb\uff0c\u540c\u57cb\u7159\u718f\u9999\u8178\u6d78\u55ba\u4e00\u500b\u5976\u6cb9\u540c\u829d\u58eb\u5473\u597d\u91cd\u5605\u5564\u9152\u6e6f\u5e95\u5165\u9762\u3002",
+        "cantonese": "The tender coconuts, tender potatoes and smoked sausages are dipped in a creamy, cheesey beer soup.",
+        "bleurt": -0.1466321349143982,
+        "canto_percent": 0.1
+    },
+    {
+        "original": "Rohan was my sibling who always flew a kite at noon, even if it was cloudy.",
+        "original_yue": "\u7f85\u6f22\u4fc2\u6211\u5144\u5f1f\uff0c\u4f62\u6210\u65e5\u55ba\u6b63\u5348\u653e\u98a8\u7b8f\uff0c\u5c31\u7b97\u5929\u9670\u9670\u3002",
+        "cantonese": "The bridge is opened to the public at noon, and closed at midnight.",
+        "bleurt": -1.2087064981460571,
+        "canto_percent": 0.08695652173913043
+    },
+    {
+        "original": "Substandard identification, recording, and reporting procedures.",
+        "original_yue": "\u8fa8\u8b58\u3001\u8a18\u9304\u540c\u5831\u544a\u7a0b\u5e8f\u8cea\u91cf\u5514\u9054\u6a19\u3002",
+        "cantonese": "The quality of the identification, recording and reporting procedures is not satisfactory.",
+        "bleurt": -0.07511037588119507,
+        "canto_percent": 0.0625
+    },
+    {
+        "original": "The angels announced the birth of Christ three separate times?",
+        "original_yue": "\u5929\u4f7f\u4e09\u6b21\u5ba3\u4f48\u57fa\u7763\u964d\u751f\u5605\u6d88\u606f\uff1f",
+        "cantonese": "The angels' three announcements of the birth of Christ?",
+        "bleurt": -0.06796197593212128,
+        "canto_percent": 0.07142857142857142
+    },
+    {
+        "original": "Manage complex application architecture and installation procedure in simple text files.",
+        "original_yue": "\u55ba\u7c21\u55ae\u5605\u7d14\u6587\u5b57\u6a94\u6848\u5ea6\u7ba1\u7406\u8907\u96dc\u5605\u61c9\u7528\u7a0b\u5f0f\u67b6\u69cb\u540c\u5b89\u88dd\u7a0b\u5e8f\u3002",
+        "cantonese": "It is a simple plain text file that manages complex application architecture and installation programs.",
+        "bleurt": -0.07387511432170868,
+        "canto_percent": 0.1111111111111111
+    },
+    {
+        "original": "Superior grip and slip-resistance thanks to surface patterns and large contact area.",
+        "original_yue": "\u591a\u5f97\u8868\u9762\u5605\u7d0b\u7406\u540c\u5927\u63a5\u89f8\u9762\u7a4d\uff0c\u4ee4\u5230\u624b\u611f\u597d\u597d\u540c\u9632\u6ed1\u3002",
+        "cantonese": "The surface of the blade is smooth and smooth, with a good grip and a good grip.",
+        "bleurt": -0.06721097230911255,
+        "canto_percent": 0.041666666666666664
+    },
+    {
+        "original": "Furthermore, sweep, dust, or vacuum it regularly and occasionally wipe your cork flooring with a damp mop.",
+        "original_yue": "\u6b64\u5916\uff0c\u5b9a\u671f\u6e05\u6383\u3001\u9664\u5875\u6216\u5438\u5875\uff0c\u540c\u57cb\u6709\u6642\u90fd\u53ef\u4ee5\u7528\u6fd5\u5730\u62d6\u62b9\u4f60\u5605\u8edf\u6728\u5730\u677f\u3002",
+        "cantonese": "In addition, regularly clean, dust or vacuum, and sometimes even mop your softwood floors with a wet cloth.",
+        "bleurt": -0.06563317775726318,
+        "canto_percent": 0.030303030303030304
+    },
+    {
+        "original": "My point is that housing is scarce and insecure and the economy is a feast and famine annual cycle.",
+        "original_yue": "\u6211\u60f3\u8b1b\u5605\u91cd\u9ede\u4fc2\u623f\u5c4b\u4f9b\u61c9\u77ed\u7f3a\u540c\u5514\u7a69\u5b9a\uff0c\u800c\u500b\u7d93\u6fdf\u5605\u5e74\u9031\u671f\u5c31\u4fc2\u597d\u58de\u4ea4\u66ff\u3002",
+        "cantonese": "The point is that housing supply is short and unstable, and the economic cycles are intermittent.",
+        "bleurt": -0.022134022787213326,
+        "canto_percent": 0.09090909090909091
+    },
+    {
+        "original": "Not to mention democrats are already split over the infrastructure bill, lmao.",
+        "original_yue": "\u90fd\u5514\u6d17\u8b1b\u6c11\u4e3b\u6d3e\u81ea\u5df1\u5c0d\u500b\u57fa\u5efa\u6cd5\u6848\u90fd\u6709\u610f\u898b\u5206\u6b67\uff0c\u7b11\u6b7b\u6211\u3002",
+        "cantonese": "The government has not yet made any official statement on the issue, but the opposition has been calling for a referendum on the issue, which is being held in the country.",
+        "bleurt": -0.7177118062973022,
+        "canto_percent": 0.038461538461538464
+    },
+    {
+        "original": "Themes of greed and revenge lead to a stunning surprise ending (genre: crime fiction)",
+        "original_yue": "\u4ee5\u8caa\u5a6a\u540c\u5831\u5fa9\u70ba\u4e3b\u984c\uff0c\u767c\u5c55\u51fa\u4e00\u500b\u51fa\u4eba\u610f\u8868\u5605\u7d50\u5c40 (\u985e\u578b\uff1a\u72af\u7f6a\u5c0f\u8aaa)",
+        "cantonese": "The theme of greed and revenge, with an unexpected ending.",
+        "bleurt": -0.2054601013660431,
+        "canto_percent": 0.03125
+    },
+    {
+        "original": "Just to clarify, though, assertive is not the same as aggressive or arrogant.",
+        "original_yue": "\u53ea\u4fc2\u60f3\u6f84\u6e05\u4e0b\uff0c\u81ea\u4fe1\u5514\u7b49\u65bc\u76db\u6c23\u51cc\u4eba\u6216\u8005\u50b2\u6162\u3002",
+        "cantonese": "It is not necessary to be self-conscious or self-righteous.",
+        "bleurt": -0.6516715288162231,
+        "canto_percent": 0.047619047619047616
+    },
+    {
+        "original": "Once out of the valley, it is easy sailing on windy trails home.",
+        "original_yue": "\u4e00\u96e2\u958b\u5cfd\u8c37\u4e4b\u5f8c\uff0c\u6cbf\u5927\u98a8\u5605\u8def\u7dda\u8fd4\u5c4b\u4f01\u90fd\u5187\u554f\u984c\u3002",
+        "cantonese": "After the canyon, the windy route back to the house is not a problem.",
+        "bleurt": -0.7741244435310364,
+        "canto_percent": 0.09090909090909091
+    },
+    {
+        "original": "Bonus points to Microsoft for allowing many route configuration options.",
+        "original_yue": "\u8981\u52a0\u5206\u4ffe Microsoft\uff0c\u56e0\u70ba\u4f62\u63d0\u4f9b\u597d\u591a\u8def\u7dda\u914d\u7f6e\u9078\u9805\u3002",
+        "cantonese": "Microsoft has been criticized for using a lot of the same operating system for many of its products.",
+        "bleurt": -0.6716928482055664,
+        "canto_percent": 0.034482758620689655
+    },
+    {
+        "original": "Hey guys, sorry for not writing the report, I didn't get home until now after the practice.",
+        "original_yue": "\u5582\u5404\u4f4d\uff0c\u5c0d\u5514\u4f4f\u7121\u5beb\u5230\u500b\u5831\u544a\uff0c\u6211\u4e00\u76f4\u7df4\u7fd2\u5230\u4f9d\u5bb6\u5148\u8fd4\u5230\u5c4b\u4f01\u3002",
+        "cantonese": "I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm",
+        "bleurt": -1.0695911645889282,
+        "canto_percent": 0.03571428571428571
+    },
+    {
+        "original": "The deceased was of an amiable and affectionate disposition, devoted to the welfare of his relatives.",
+        "original_yue": "\u901d\u8005\u70ba\u4eba\u548c\u85f9\u53ef\u89aa\uff0c\u60c5\u6df1\u7fa9\u91cd\uff0c\u5c0d\u7167\u9867\u89aa\u4eba\u5605\u8914\u7949\u4e0d\u907a\u9918\u529b\u3002",
+        "cantonese": "The person who is ill or depressed is unable to care for himself or herself.",
+        "bleurt": -1.1273078918457031,
+        "canto_percent": 0.037037037037037035
+    },
+    {
+        "original": "Pristine and remote, this barrier island is a slice of primitive paradise.",
+        "original_yue": "\u65e2\u539f\u59cb\u53c8\u504f\u50fb\uff0c\u5462\u500b\u5c4f\u969c\u5cf6\u4fc2\u4e00\u7247\u539f\u59cb\u5929\u5802\u3002",
+        "cantonese": "The island is a primeval and remote paradise.",
+        "bleurt": -0.0596017986536026,
+        "canto_percent": 0.0
+    },
+    {
+        "original": "Book artist, printmaker, rabid reader, freelance writer, and editor.",
+        "original_yue": "\u66f8\u85dd\u5bb6\u3001\u7248\u756b\u5e2b\u3001\u611b\u66f8\u4eba\u3001\u81ea\u7531\u64b0\u7a3f\u4eba\u540c\u7de8\u8f2f\u3002",
+        "cantonese": "He was a book artist, printmaker, book lover, freelance writer and editor.",
+        "bleurt": -0.11760270595550537,
+        "canto_percent": 0.0
+    },
+    {
+        "original": "Even a waiter who isn\u2019t a secret agent in disguise might mention it to his supervisor or something.",
+        "original_yue": "\u5c31\u7b97\u4fc2\u500b\u5f85\u61c9\uff0c\u4f62\u5514\u9700\u8981\u4fc2\u5367\u5e95\u7279\u5de5\u90fd\u53ef\u80fd\u6703\u540c\u4f62\u8001\u7d30\u6216\u5176\u4ed6\u4eba\u8b1b\u8d77\u56c9\u3002",
+        "cantonese": "If he is not able to do so, he may be forced to work with a friend or a relative.",
+        "bleurt": -0.5597497224807739,
+        "canto_percent": 0.09375
+    }
+]

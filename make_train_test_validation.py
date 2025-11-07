@@ -1,5 +1,4 @@
 import datasets
-import json
 import os
 
 def save_train_test_validation(dataset, name):
@@ -16,7 +15,8 @@ en_yue_sentences: datasets.dataset_dict.DatasetDict = datasets.load_dataset("goo
 en_yue_docs: datasets.dataset_dict.DatasetDict = datasets.load_dataset("google/smol", "smoldoc__en_yue")       # type: ignore
 en_yue_characters: datasets.dataset_dict.DatasetDict = datasets.load_dataset("google/smol", "gatitos__en_yue") # type: ignore
 
+# Split SMOL datasets in 60% training data, 20% validation, 20% test
+
 save_train_test_validation(en_yue_sentences, "smol_en_yue_sentences")
 save_train_test_validation(en_yue_docs, "smol_en_yue_docs")
-save_train_test_validation(en_yue_characters, "gatitos_yue_zh_characters")
 
