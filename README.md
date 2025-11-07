@@ -10,15 +10,21 @@ Our contributions are:
 * Showing that using the SMOL dataset to finetune Cantonese -> English models improves translation performance. 
 ## Potential extra datasets
 For future finetuning, basede on the findings of Dare et. al., there's large potential in giving models more data, even unlabled, as models have usually been exposed to very little Cantonese data. They use a corpus consisting of Wikipedia articles and a cleaned scrape of Instagram and Youtube subtitles, and have compiled this into a dataset that might be useful in our project too.
+
+In order to train word2vec embeddings for Cantonese we collect unlabelled Cantonese data. We use the monolingual Cantonese corpus compiled by M. Dare, et. al that sources data from other monolingual datasets, Wikipedia, Youtube Subtitles, Instagram and Cantonese blogs. 
 ## Methods
 **TODO: Write full text not bullet points**
 - Benchmarking of existing models and analsis of areas where these show weak performance
 - Finetuning models with additional data from SMOL
 ## Timeline
-7/11/2025 - 14/11/2025 - Collecting unlabelled Cantonese dataset. 
+7/11/2025 - 14/11/2025 - Collecting unlabelled Cantonese dataset.
+
 14/1172025 - 21/11/2025 - Train word2vec embeddings on unlabelled cantonese data. 
+
 21/11/2025 - 28/11/2025 - Perform embedding transform on trained word2vec embeddings using Gatitos character dataset 
+
 28/11/2025 - 5/12/2025 - Do back-translation finetuning on SMOLSent English -> Cantonese and SMOLDoc English -> Cantonese. 
+
 5/12/2025 - 19/12/2025 - Write and submit final project and report. 
 ## Organization
 1. Collect corpus of unlabelled Cantonese data. 
