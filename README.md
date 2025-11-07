@@ -11,7 +11,14 @@ Our contributions are:
 ## Potential extra datasets
 For future finetuning, basede on the findings of Dare et. al., there's large potential in giving models more data, even unlabled, as models have usually been exposed to very little Cantonese data. They use a corpus consisting of Wikipedia articles and a cleaned scrape of Instagram and Youtube subtitles, and have compiled this into a dataset that might be useful in our project too.
 
-In order to train word2vec embeddings for Cantonese we collect unlabelled Cantonese data. We use the monolingual Cantonese corpus compiled by M. Dare, et. al that sources data from other monolingual datasets, Wikipedia, Youtube Subtitles, Instagram and Cantonese blogs. 
+In order to train word2vec embeddings for Cantonese we collect unlabelled Cantonese data. We use the monolingual Cantonese corpus compiled by M. Dare, et. al that sources data from other monolingual datasets, Wikipedia, Youtube Subtitles, Instagram and Cantonese blogs. The dataset consists of 923084 unlabelled sentences with spaces inserted between tokens. Without inserted spaces, the average length of sentences in the dataset is 33 characters, the median length is 25 characters and the max length is 1433 characters. The dataset appears to be much higher quality than other publicly available monolingual datasets, such as the internet-scraped MADLAD which contains lots of english text, website names, dates, urls and general website information. Two randomly selected sentences from the dataset can be seen below: 
+
+      有人 用 毛 代 角 。
+
+      第二 階段 投票 將會 喺 下 周 一 至 周 五 舉行 ， 從 最後 五 強中 票選 「 我 最喜愛 的 男 / 女 / 組合 」 ， 結果 將會 喺 1 月 1 號 嘅 頒獎禮 公佈 。
+
+
+
 ## Methods
 For initial benchmarking of the state of the art we scrape SMOLSent translations from Google & Bing Cantonese and Simplified/Traditional Chinese models. For initial evaluation of translation quality we use BLEURT as an evaluation proxy of human assessment. For in depth analysis we do manual evaluation of the English-outcome translations. 
 
