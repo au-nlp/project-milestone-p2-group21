@@ -9,7 +9,7 @@ Our contributions are:
 * Demonstrating that Cantonese-only tokens degrade the performance of models on Cantonese-translation tasks, and token- and embedding-transformation approaches that significantly improve performance in these cases.
 * Showing that using the SMOL dataset to finetune Cantonese -> English models improves translation performance. 
 ## Potential extra datasets
-For future finetuning, basede on the findings of \ref{dare2023unsupervisedmandarincantonesemachinetranslation}, there's large potential in giving models more data, even unlabled, as models have usually been exposed to very little Cantonese data. They use a corpus consisting of Wikipedia articles and a cleaned scrape of Instagram and Youtube subtitles, and have compiled this into a dataset that might be useful in our project too.
+For future finetuning, basede on the findings of Dare et. al., there's large potential in giving models more data, even unlabled, as models have usually been exposed to very little Cantonese data. They use a corpus consisting of Wikipedia articles and a cleaned scrape of Instagram and Youtube subtitles, and have compiled this into a dataset that might be useful in our project too.
 ## Methods
 **TODO: Write full text not bullet points**
 - Benchmarking of existing models and analsis of areas where these show weak performance
@@ -17,25 +17,13 @@ For future finetuning, basede on the findings of \ref{dare2023unsupervisedmandar
 ## Timeline
 ## Organization
 ## References
-@misc{dare2023unsupervisedmandarincantonesemachinetranslation,  
-      title={Unsupervised Mandarin-Cantonese Machine Translation},   
-      author={Megan Dare and Valentina Fajardo Diaz and Averie Ho Zoen So and Yifan Wang and Shibingfeng Zhang},  
-      year={2023},  
-      eprint={2301.03971},  
-      archivePrefix={arXiv},  
-      primaryClass={cs.CL},  
-      url={https://arxiv.org/abs/2301.03971},   
-}  
+      Unsupervised Mandarin-Cantonese Machine Translation
+      Megan Dare and Valentina Fajardo Diaz and Averie Ho Zoen So and Yifan Wang and Shibingfeng Zhang
+      https://arxiv.org/abs/2301.03971  
 
-@misc{kudugunta2023madlad400multilingualdocumentlevellarge,  
-      title={MADLAD-400: A Multilingual And Document-Level Large Audited Dataset},   
-      author={Sneha Kudugunta and Isaac Caswell and Biao Zhang and Xavier Garcia and Christopher A. Choquette-Choo and Katherine Lee and Derrick Xin and Aditya Kusupati and Romi Stella and Ankur Bapna and Orhan Firat},  
-      year={2023},  
-      eprint={2309.04662},  
-      archivePrefix={arXiv},  
-      primaryClass={cs.CL},  
-      url={https://arxiv.org/abs/2309.04662},   
-}  
+      MADLAD-400: A Multilingual And Document-Level Large Audited Dataset
+      Sneha Kudugunta and Isaac Caswell and Biao Zhang and Xavier Garcia and Christopher A. Choquette-Choo and Katherine Lee and Derrick Xin and Aditya Kusupati and Romi Stella and Ankur Bapna and Orhan Firat  
+      https://arxiv.org/abs/2309.04662
 ## Appendix
 ### Repo org
 main.ipybn contains data exploration and benchmarks of existing models, both traditional and a T5 based model.
