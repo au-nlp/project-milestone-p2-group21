@@ -1,2 +1,7 @@
-bleurt-base-128/
+bleurt-base-128/*
+BLEURT-20/variables
+BLEURT-20/BLEURT-20.zip
+BLEURT-20/saved_model.pb
+BLEURT-20/sent_piece.model
+BLEURT-20/sent_piece.vocab
 *.html
