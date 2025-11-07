@@ -15,7 +15,18 @@ For future finetuning, basede on the findings of Dare et. al., there's large pot
 - Benchmarking of existing models and analsis of areas where these show weak performance
 - Finetuning models with additional data from SMOL
 ## Timeline
+7/11/2025 - 14/11/2025 - Collecting unlabelled Cantonese dataset. 
+14/1172025 - 21/11/2025 - Train word2vec embeddings on unlabelled cantonese data. 
+21/11/2025 - 28/11/2025 - Perform embedding transform on trained word2vec embeddings using Gatitos character dataset 
+28/11/2025 - 5/12/2025 - Do back-translation finetuning on SMOLSent English -> Cantonese and SMOLDoc English -> Cantonese. 
+5/12/2025 - 19/12/2025 - Write and submit final project and report. 
 ## Organization
+1. Collect corpus of unlabelled Cantonese data. 
+2. Train word2vec embeddings on unlabelled Cantonese data.
+3. Perform embedding transform on Cantonese word2vec embeddings to our model's (Madlad?) embeddings, using Gatitos character-level translations.
+4. Do back-translation finetuning on SMOLSent English -> Cantonese and SMOLDoc English -> Cantonese.
+5. Potentially expand approach to other low resource languages.
+
 ## References
       Unsupervised Mandarin-Cantonese Machine Translation
       Megan Dare and Valentina Fajardo Diaz and Averie Ho Zoen So and Yifan Wang and Shibingfeng Zhang
