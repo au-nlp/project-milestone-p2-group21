@@ -1,4 +1,5 @@
 from pathlib import Path
+import os
 
 from gensim.models import Word2Vec
 import numpy as np
@@ -24,9 +25,12 @@ def train_word2vec(sentences):
 
     return model
 
-#model = train_word2vec(sentences)
+if os.path.exists((Path("./") / "unlabelled" / "1_epoch_embeddings").__str__()):
+    model = Word2Vec.load((Path("./") / "unlabelled" / "1_epoch_embeddings").__str__())
+else: 
+    model = train_word2vec(sentences)
 #model.save((Path("./") / "unlabelled" / "cantonese_embeddings.model").__str__())
-model = Word2Vec.load((Path("./") / "unlabelled" / "1_epoch_embeddings").__str__())
+model.save((Path("./") / "unlabelled" / "1_epoch_embeddings").__str__())
 
 # Embedding arithmetic tests
 def find_best(similar_words, input_words):
@@ -35,7 +39,7 @@ def find_best(similar_words, input_words):
     return similar_words[max_index][0]
 
 # 爸爸 (dad) - 男 (man) + 女 (woman) = 媽媽 (mom) 
-#print(model.wv.similar_by_vector(model.wv["爸爸"] - model.wv["男"] +  model.wv["女"]))
+#print(model.wv.similar_by_vector(model.wv["爸爸"] - model.wv["男"]*2 + model.wv["女"]*2))
 print(f'爸爸 - 男 + 女 = {find_best(model.wv.similar_by_vector(model.wv["爸爸"] - model.wv["男"] +  model.wv["女"]), ["爸爸", "男", "女"])}')
 
 # 王 (king) - 男 (man) + 女 (woman) = 女皇 / 皇帝 (queen) 
