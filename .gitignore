@@ -6,3 +6,4 @@ BLEURT-20/saved_model.pb
 BLEURT-20/sent_piece.model
 BLEURT-20/sent_piece.vocab
 *.html
+*.gz
