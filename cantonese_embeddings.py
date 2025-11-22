@@ -2,31 +2,71 @@ from pathlib import Path
 
 from gensim.models import Word2Vec
 import numpy as np
-from nltk.corpus import brown, stopwords
+from tqdm import tqdm
+#from nltk.corpus import brown, stopwords
 
 with open(Path("./") / "unlabelled" / "cantonese.txt", "r", encoding="utf8") as f:
     text = f.read()
 
-sentences = [x.split(" ") for x in text.split("\n")]
+sentences = text.split("\n")
+
+sentences = [x.split(" ") for x in tqdm(sentences)]
+#sentences = [x.split(" ") for x in tqdm(sentences[:int(len(sentences)*0.1)])]
+sentences = [x for x in sentences if len(x) >= 10]
 #stopwords = set(stopwords.words("chinese"))
+
+from gensim.models.callbacks import CallbackAny2Vec
+
+
+losses = []
+
+class callback(CallbackAny2Vec):
+    '''Callback to print loss after each epoch.'''
+
+    def __init__(self):
+        self.epoch = 0
+        self.last_loss = 0
+
+    def on_epoch_end(self, model):
+        global losses
+        loss = model.get_latest_training_loss()
+        loss = loss - self.last_loss
+        self.last_loss += loss
+        losses.append(loss)
+        print('Loss after epoch {}: {}'.format(self.epoch, loss))
+        self.epoch += 1
 
 def train_word2vec(sentences):
     model = Word2Vec(
         sentences=sentences,
         vector_size=1024,   # embedding size 
-        window=3,         # context window
+        window=10,         # context window
         min_count=1,      # keep all words 
-        workers=4,        # number of CPU cores to use
+        workers=1,        # number of CPU cores to use
         sg=1,             # skip-gram (better for small data)
-        epochs=1,        # more passes to learn something
-        seed=42
+        epochs=10,        # more passes to learn something
+        seed=42,
+        compute_loss=True,
+        #alpha=0.1,
+        #min_alpha=0.000001,
+        #shrink_windows=True,
+        callbacks=[callback()],
+        #negative=5,
+        #ns_exponent=0.75,
+        #sample=10**-5,
+        #hs=0
     )
 
     return model
 
-#model = train_word2vec(sentences)
-#model.save((Path("./") / "unlabelled" / "cantonese_embeddings.model").__str__())
-model = Word2Vec.load((Path("./") / "unlabelled" / "1_epoch_embeddings").__str__())
+model = train_word2vec(sentences)
+model.save((Path("./") / "unlabelled" / "10_epoch_embeddings_long_sentences.model").__str__())
+#model = Word2Vec.load((Path("./") / "unlabelled" / "10_epoch_embeddings.model").__str__())
+
+import matplotlib.pyplot as plt
+
+plt.plot(losses)
+plt.show()
 
 # Embedding arithmetic tests
 def find_best(similar_words, input_words):
