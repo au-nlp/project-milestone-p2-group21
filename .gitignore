@@ -6,8 +6,6 @@ BLEURT-20/saved_model.pb
 BLEURT-20/sent_piece.model
 BLEURT-20/sent_piece.vocab
 *.html
-<<<<<<< HEAD
 madlad_embedding.pth
-=======
+*.npy
 *.gz
->>>>>>> c97d1289b36932e07595ebe58c31e920db674176

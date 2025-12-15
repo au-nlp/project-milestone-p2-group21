@@ -11,6 +11,7 @@
 \usepackage{microtype}      % microtypography
 \usepackage{xcolor}         % colors
 
+\newcommand{\todo}[1]{\textcolor{red}{TODO: #1}}
 
 \title{Improving Cantonese translation in existing multilingual translation models}
 
@@ -21,9 +22,17 @@ Andreas H. H. Hansen\\
   Aarhus, Denmark \\
   \texttt{ahhh@cs.au.dk}
 \And
-Lasse
+Lasse W. Edslev\\
+  Department of Computer Science\\
+  Aarhus University\\
+  Aarhus, Denmark \\
+  \texttt{lasse.edslev@cs.au.dk}
 \And
-Victor
+Victor B. Poulsen\\
+  Department of Computer Science\\
+  Aarhus University\\
+  Aarhus, Denmark \\
+  \texttt{au705783@uni.au.dk}
 }
 
 
@@ -33,10 +42,21 @@ Victor
 
 \input{abstract}
 
+\input{related_works}
+
 \input{introduction}
 
-\input{background}
+\input{datasets}
+
+\input{baseline}
 
 \input{experiments}
+
+\input{results}
+
+\input{discussion}
+
+\bibliographystyle{plain} 
+\bibliography{refs}
 
 \end{document}
