@@ -3,8 +3,9 @@
 If we were to simply train a model on Gatitos token-level data it might get slightly better at some characters in the small Gatitos dataset, but we would not be able to generalize the model to become better at all Cantonese vocabulary. 
 
 Instead we propose the following experiment, we train embeddings on a large corpus of unlabeled Cantonese data, hoping to get embeddings that better represent semantic similarity between Cantonese tokens than the embeddings of MADLAD do. We then perform an embedding transform from our Cantonese embeddings to MADLAD's Chinese embedding space using token-level translations from Gatitos. Specifically, we train a transformation matrix $W$ such that for a specific Cantonese-Chinese token embedding pair $E_{canto}, E_{mandarin}$ the embedding transformation $E_{canto}W$ approximates $E_{mandarin}$. 
+This training was simply done optimizing the loss function $|| E_{canto} W - E_{mandarin}||$ with the \textsc{Adam}-algorithm\cite{kingma2017adammethodstochasticoptimization}.
 
-For training the Cantonese embeddings we use the Monolingual Cantonese corpus by M. Dare, et. al. 
+For training the Cantonese embeddings we use the Monolingual Cantonese corpus by M. Dare, et. al.
 
 \subsection{Smol finetuning}
 

@@ -1,1 +1,5 @@
 \section{Introduction}
+Although Cantonese has more than 85 million speakers, it is very underrepresented in machine learning and translation, with many Cantonese tasks simply being handled by models trained mostly or exclusively on Mandarin. 
+In this project, we explore how both unsupervised and supervised learning can be applied to improve the quality of translation tasks. For this, we use the professionally translated data in the \textsc{SMOL}\cite{caswell2025smolprofessionallytranslatedparallel} and \textsc{Gatitos}\cite{jones-etal-2023-gatitos} datasets and the unlabeled data in the dataset collected by Dare et al.\cite{dare2023unsupervisedmandarincantonesemachinetranslation}.
+We use the unlabeled data to train Cantonese token embeddings and then transform these embeddings into the embedding space of a pre-trained English-Mandarin model, \textsc{MADLAD}\cite{li-etal-2023-madlad}, using the token-level translations in \textsc{Gatitos}. This \todo{Results of this}.
+We then finetune \textsc{MADLAD} on the \textsc{SMOL} dataset and evaluate the performance of the finetuned model on a held-out test set from \textsc{SMOL}. \todo{Results of this}.
