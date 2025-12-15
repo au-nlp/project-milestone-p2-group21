@@ -1,11 +1,22 @@
 \section{Experiments}
+\subsection{Token replacement}
+Since the MADLAD model appears to have difficulty with sentences that contain words that are native to written Cantonese, we do an experiment where we replace words that are native to written Cantonese with their Mandarin Chinese translations. To find words that are native to written Cantonese we use CantoDict\cite{cantodict}, a collaborative project where Cantonese speakers annotate Cantonese characters with information about their meaning, pronounciation and usage in written Cantonese and Mandarin. If a character in a sentence is used in Cantonese but not used in Mandarin, we try to find its translation in the Gatitos dataset and do a token-level replacement as preprocessing to MADLAD inference. 
+
+
+
+
 \subsection{Embedding transform}
-If we were to simply train a model on Gatitos token-level data it might get slightly better at some characters in the small Gatitos dataset, but we would not be able to generalize the model to become better at all Cantonese vocabulary. 
+From the promising results of the token replacement experiment \ref{results:token_replacement}, we believe that giving the model more knowledge of Cantonese characters could significantly improve its Cantonese translation ability.  
+
+If we were to simply train a model on Gatitos token-level data it might get slightly better at some characters in the small Gatitos dataset, but we would not be able to generalize the model to become better at a significant amount of Cantonese vocabulary. 
 
 Instead we propose the following experiment: We train embeddings on a large corpus of unlabeled Cantonese data, hoping to get embeddings that better represent semantic similarity between Cantonese tokens than the embeddings of MADLAD do. We then perform an embedding transform from our Cantonese embeddings to MADLAD's Chinese embedding space using token-level translations from Gatitos. Specifically, we train a transformation matrix $W$ such that for a specific Cantonese-Chinese token embedding pair $E_{canto}, E_{mandarin}$ the embedding transformation $E_{canto}W$ approximates $E_{mandarin}$. 
 This training was simply done optimizing the loss function $|| E_{canto} W - E_{mandarin}||$ with the \textsc{Adam}-algorithm\cite{kingma2017adammethodstochasticoptimization}.
 
 For training the Cantonese embeddings we use the Monolingual Cantonese corpus by M. Dare, et. al. to train a Word2Vec\cite{mikolov2013efficientestimationwordrepresentations} model.
 
-\subsection{Smol finetuning}
-We finetune the MADLAD model on the SMOL dataset, specifically the English-Cantonese portion of the dataset, using a ??/?? split for training/validation. We finetune for ?? epochs with a learning rate of ??? and batch size ???.
+\subsection{SMOL finetuning}
+We do back-translation finetuning for the MADLAD model on the SMOLSent and SMOLDoc English-Cantonese datasets. We flatten the SMOLDoc dataset such that it consists of sentence pairs like SMOLSent, and combine the two datasets using a 80/10/10 split for training/validation/test.
+
+
+

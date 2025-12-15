@@ -1,3 +1,18 @@
 \section{Results}
+\subsection{Token replacement}
+\label{results:token_replacement}
+
+
+
 \subsection{Embedding transform}
-\subsection{Smol finetuning}
+
+
+
+
+\subsection{SMOL finetuning}
+We finetune with a learning rate of ??? and a batch size of $8$ with a weight decay of $0.01$ using a A100 GPU on Google Colab. After $1$ epoch ($784$ steps) the model starts to overfit as can be seen on figure \todo{Insert figure and figure reference}, so we use a checkpoint of the model saved after the first epoch. 
+
+
+
+
+
