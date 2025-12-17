@@ -1,21 +1,29 @@
 \section{Results}
 \subsection{Token replacement}
 \label{results:token_replacement}
-\begin{figure}
+\begin{figure}[H]
     \BLEURTtokenreplacementviolin
     \caption{BLEURT scores for token replacement experiment, binned by ratio of Cantonese-only characters in the source sentence.}
     \label{fig:bleurt_token_replacement}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[H]
     \tokenreplacementexample
     \label{table:tokenreplacementexample}
 \end{figure}
 After performing token replacement and translating the resulting sentences with \textsc{MADLAD}, we calculate BLEURT scores. On average, the token replacement approach performs slightly worse than the baseline, with an average BLEURT score of $0.6704$ compared to the baseline's $0.6807$. We do however observe that many sentences do see a significant improvement, both in BLEURT score and in translation quality as perceived by humans. At the same time, many sentences also see a significant drop in BLEURT score and translation quality. A few examples of this can be seen in the table \ref{table:tokenreplacementexample}.
 To check whether the ratio of Cantonese characters in the source sentence has an effect on the performance of the token replacement approach, we bin the sentences by their ratio of replaced characters and plot violin plots of the BLEURT scores for each bin in figure \ref{fig:bleurt_token_replacement}. We see no real trend in the results, with both the baseline and token replacement approach performing similarly across all bins, although there is a slight tendency for the token replacement approach to perform better on sentences with a higher ratio of Cantonese characters.
 \subsection{Embedding transform}
+We train the GloVe embeddings using Stanford's GloVe implementation for $15$ epochs. We train the Word2Vec embeddings using Gensim's Word2Vec implementation for $6$ epochs. 
 
-
+We train the embedding transformation matrix using stochastic gradient descent with a learning rate of $10^{-2}$ and a batch size of $64$ for $175$ epochs until it stops improving. A loss plot for training the transformation matrix for our GloVe embeddings can be seen on figure \ref{fig:glove_loss}.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{report/data_and_figs/glove_loss_plot.png}
+    \caption{Plot of GloVe transformation matrix loss during training}
+    \label{fig:glove_loss}
+\end{figure}
+The transformed embeddings for both Word2Vec and GloVe are however quite bad and generate seemingly random output, although it is still coherent speech. This leads us to believe that there is no approximate linear transformation between the Word2Vec / GloVe embeddings and the MADLAD embeddings which have been trained through masked language modeling. 
 
 
 \subsection{SMOL finetuning}
@@ -24,7 +32,7 @@ We finetune with a learning rate of $10^{-4}$ and a batch size of $8$ with a wei
 
 
 
-\begin{figure}
+\begin{figure}[H]
     \BLEURTresults
     %\caption{BLEURT scores}
     \label{fig:bleurt_scores}
