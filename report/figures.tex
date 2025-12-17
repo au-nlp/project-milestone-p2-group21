@@ -1,0 +1,73 @@
+\usepackage{caption}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{varwidth}
+\usepackage{ifthen}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{plotmarks}
+\usetikzlibrary{pgfplots.colorbrewer}
+\usetikzlibrary{external}
+
+
+\newcommand\resultplot[6]
+{\pgfplotsset{
+    % initialize Set1-5:
+    cycle list/Set1-5,
+    % combine it with 'mark list*':
+    cycle multiindex* list={
+        mark list*\nextlist
+        Set1-5\nextlist
+      },
+  }
+  \pgfplotstableread[col sep=comma]{#2}\accutable
+  \pgfplotstableread[col sep=comma]{#3}\timetable
+
+  \begin{minipage}{\textwidth}
+    \begin{tikzpicture}
+      \begin{axis}[
+          name=timeax,
+          xmajorgrids=true, ymajorgrids=true,
+          xlabel={Noise}, ylabel={Accuracy},
+          xtick=data,
+          xticklabels={0, 5, 10, 15, 20, 25},
+          %log number format basis/.code 2 args={$\pgfmathparse{#1^(#2)}\mathsf{\pgfmathprintnumber{\pgfmathresult}}$},
+          %yticklabels=={$\pgfmathprintnumber[precision=0]{\tick}$},
+          %syticklabels={0.4, 0.3, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0},
+          %legend style={at={(0.5,-0.16)}, anchor=north, legend columns=2, font=\footnotesize, legend cell align={left}},
+          width=\textwidth*0.45,
+          height=\textwidth*0.45,
+        ]
+        \pgfplotsforeachungrouped \i in {0,...,#4} {
+            \addplot table[x expr=\coordindex, y index=\i]
+              {\accutable};
+          }
+      \end{axis}
+      \begin{semilogyaxis}[
+          at={(timeax.south east)},
+          xshift=2cm,
+          xmajorgrids=true, ymajorgrids=true,
+          xlabel={Noise}, ylabel={Time (s)},
+          xtick=data,
+          xticklabels={0, 5, 10, 15, 20, 25},
+          %log number format basis/.code 2 args={$\pgfmathparse{#5^(#6)}\mathsf{\pgfmathprintnumber{\pgfmathresult}}$},
+          %yticklabels={0.1, 1, 10, 100, 1000},
+          legend style={at={(-0.25,-0.25)}, anchor=north, legend columns=3, font=\footnotesize, legend cell align={left}},
+          width=\textwidth*0.45,
+          height=\textwidth*0.45,
+        ]
+        \pgfplotsforeachungrouped \i in {0,...,#4} {
+            \addplot table[x expr=\coordindex, y index=\i]
+              {\timetable};
+          }
+        \ifthenelse{\equal{#5}{true}}{
+          %\legend{\textsc{Fugal}, \textsc{cuGAL-Mix}, \textsc{cuGAL-Mix} $\gamma=0.1$, \textsc{cuGAL-Mix} $\gamma=0.2$,\textsc{cuGAL-Mix-Greedy}, \textsc{cuGAL-Mix-Greedy} $\gamma=0.1$, \textsc{cuGAL-Mix-Greedy} $\gamma=0.2$,\textsc{cuGAL-Log}, \textsc{cuGAL-Log} $\gamma=0.1$, \textsc{cuGAL-Log} $\gamma=0.2$, \textsc{cuGAL-Log-Greedy}, \textsc{cuGAL-Log-Greedy} $\gamma=0.1$, \textsc{cuGAL-Log-Greedy} $\gamma=0.2$}
+          \legend{#6}
+        }{}
+      \end{semilogyaxis}
+    \end{tikzpicture}
+    \captionof{figure}{Runtime and accuracy on #1 dataset}
+    \label{fig:#1_res}
+  \end{minipage}
+}
