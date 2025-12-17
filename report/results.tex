@@ -1,18 +1,31 @@
 \section{Results}
 \subsection{Token replacement}
 \label{results:token_replacement}
+\begin{figure}
+    \BLEURTtokenreplacementviolin
+    \caption{BLEURT scores for token replacement experiment, binned by ratio of Cantonese-only characters in the source sentence.}
+    \label{fig:bleurt_token_replacement}
+\end{figure}
 
-
-
+\begin{figure}
+    \tokenreplacementexample
+    \label{table:tokenreplacementexample}
+\end{figure}
+After performing token replacement and translating the resulting sentences with \textsc{MADLAD}, we calculate BLEURT scores. On average, the token replacement approach performs slightly worse than the baseline, with an average BLEURT score of $0.6704$ compared to the baseline's $0.6807$. We do however observe that many sentences do see a significant improvement, both in BLEURT score and in translation quality as perceived by humans. At the same time, many sentences also see a significant drop in BLEURT score and translation quality. A few examples of this can be seen in the table \ref{table:tokenreplacementexample}.
+To check whether the ratio of Cantonese characters in the source sentence has an effect on the performance of the token replacement approach, we bin the sentences by their ratio of replaced characters and plot violin plots of the BLEURT scores for each bin in figure \ref{fig:bleurt_token_replacement}. We see no real trend in the results, with both the baseline and token replacement approach performing similarly across all bins, although there is a slight tendency for the token replacement approach to perform better on sentences with a higher ratio of Cantonese characters.
 \subsection{Embedding transform}
 
 
 
 
 \subsection{SMOL finetuning}
-We finetune with a learning rate of ??? and a batch size of $8$ with a weight decay of $0.01$ using a A100 GPU on Google Colab. After $1$ epoch ($784$ steps) the model starts to overfit as can be seen on figure \todo{Insert figure and figure reference}, so we use a checkpoint of the model saved after the first epoch. 
+We finetune with a learning rate of $10^{-4}$ and a batch size of $8$ with a weight decay of $0.01$ using a A100 GPU on Google Colab. After $1$ epoch ($784$ steps) the model starts to overfit as can be seen on figure \ref{fig:bleurt_scores}, so we use a checkpoint of the model saved after the first epoch.
 
 
 
 
-
+\begin{figure}
+    \BLEURTresults
+    %\caption{BLEURT scores}
+    \label{fig:bleurt_scores}
+\end{figure}
