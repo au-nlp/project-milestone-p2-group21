@@ -6,10 +6,10 @@ import numpy as np
 from tqdm import tqdm
 #from nltk.corpus import brown, stopwords
 
-"""
 
 with open(Path("./") / "unlabelled" / "cantonese.txt", "r", encoding="utf8") as f:
     text = f.read()
+
 
 sentences = text.split("\n")
 
@@ -23,11 +23,6 @@ tokenizer = T5Tokenizer.from_pretrained(model_name)
 sentences = ["".join(x.split(" ")) for x in tqdm(sentences)]
 sentences = [tokenizer(x) for x in tqdm(sentences)]
 sentences = [[tokenizer.decode(z) for z in x["input_ids"]] for x in tqdm(sentences)]
-
-#sentences = [x.split(" ") for x in tqdm(sentences[:int(len(sentences)*0.1)])]
-#sentences = [x for x in sentences if len(x) >= 10]
-#stopwords = set(stopwords.words("chinese"))
-"""
 
 from gensim.models.callbacks import CallbackAny2Vec
 
