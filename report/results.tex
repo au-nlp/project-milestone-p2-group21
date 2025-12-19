@@ -25,30 +25,39 @@ We train the embedding transformation matrix using stochastic gradient descent w
     \caption{Plot of GloVe transformation matrix loss during training}
     \label{fig:glove_loss}
 \end{figure}
-The transformed embeddings for both Word2Vec and GloVe are however quite bad and generate seemingly random output, although it is still mostly coherent speech. This leads us to believe that there is no approximate linear transformation between the Word2Vec / GloVe embeddings and the MADLAD embeddings which have been trained through masked language modeling. Here are two example outputs: \\
-\begin{tabular}{m\textwidth}
-    Original:                                                                                                                                                                                                                            \\
-    \small{As a reminder, this company launched a 34-inch curved gaming monitor last October.}                                                                                                                                           \\
-    Transformed:                                                                                                                                                                                                                         \\
-    \small{The company is now in the process of launching a new product, the 10-month-old baby-size baby-sized baby-sized baby-sized baby-sized baby-sized baby-sized baby-sized baby-sized baby-sized baby-sized baby-sized baby-sized} \\
-    Original:                                                                                                                                                                                                                            \\
-    \small{Rohan was my sibling who always flew a kite at noon, even if it was cloudy.}                                                                                                                                                  \\
-    Transformed:                                                                                                                                                                                                                         \\
-    \small{I'm a little bit shy, but I'm not alone.}
-\end{tabular}
+The transformed embeddings for both Word2Vec and GloVe are however quite bad and generate seemingly random output, although it is still mostly coherent speech. This leads us to believe that there is no approximate linear transformation between the Word2Vec / GloVe embeddings and the MADLAD embeddings which have been trained through masked language modeling. Two example outputs can be seen on figure \ref{fig:embedding_examples}.
+
+
+\begin{figure}[H]
+    \centering
+    \begin{tabular}{|p {0.3\textwidth}|p {0.7\textwidth}|}
+         \hline
+         Source & Embedding transform  \\
+         \hline
+         \small{As a reminder, this company launched a 34-inch curved gaming monitor last October.} & \small{The company is now in the process of launching a new product, the 10-month-old baby-size baby-sized baby-sized baby-sized baby-sized baby-sized baby-sized baby-sized baby-sized baby-sized baby-sized baby-sized baby-sized} \\
+         \hline
+         \small{Rohan was my sibling who always flew a kite at noon, even if it was cloudy.} & \small{I'm a little bit shy, but I'm not alone.} \\
+         \hline
+    \end{tabular}
+
+    \caption{Two example outputs for translations with embedding transformation.}
+    \label{fig:embedding_examples}
+\end{figure}
+
 
 \subsection{\textsc{SMOL} finetuning}
-We finetune with a learning rate of $5 \cdot 10^{-5}$ and a batch size of $8$ with a weight decay of $0.01$ using a A100 GPU on Google Colab. After $1$ epoch ($784$ steps) the model starts to overfit, and no longer improves on the test set, as can be seen on figure \ref{fig:finetuning_loss}, so we use a checkpoint of the model saved after the first epoch.
+We finetune with a learning rate of $5 \cdot 10^{-5}$ and a batch size of $8$ with a weight decay of $0.01$ using a A100 GPU on Google Colab. After $1$ epoch ($784$ steps) the model starts to overfit, and no longer improves on the test set, as can be seen on figure \ref{fig:finetuning_loss}, so we use a checkpoint of the model saved after the first epoch. The average BLEURT scores for the fine-tuned model on the test set with 95\% confidence intervals can be seen on figure \ref{fig:confidence_intervals}. We see an improvement of $0.044$ ($6.46\%$) BLEURT from the baseline model to the finetuned model. 
 
 
 
 \begin{figure}[H]
     \finetuningloss
-    \label{fig:finetuning_loss}
     \caption{Training loss during finetuning on \textsc{SMOLSent} + \textsc{SMOLDoc}. The vertical line indicates the end of the first epoch where training was stopped.}
+    \label{fig:finetuning_loss}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[H]
     \allscores
-    \caption{Confidence interval for BLEURT Scores on the test set. We calculate the confidence intervals with the $t$ distribution with degrees of freedom equal to the length of our test set minus one. We use Bessel's correction for the sample standard deviation. }
+    \caption{95\% Confidence interval for BLEURT Scores on the test set. We calculate the confidence intervals with the $t$ distribution with degrees of freedom equal to the length of our test set minus one. We use Bessel's correction for the sample standard deviation. }
+    \label{fig:confidence_intervals}
 \end{figure}
