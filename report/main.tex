@@ -18,6 +18,9 @@
 \usepackage{amsmath}
 \usepackage{pgfplots}
 \usepackage{pgfplotstable}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
 \usetikzlibrary{decorations.pathreplacing}
 \usetikzlibrary{plotmarks}
 \usetikzlibrary{pgfplots.colorbrewer}
@@ -27,26 +30,26 @@
 
 \newcommand{\todo}[1]{\textcolor{red}{TODO: #1}}
 
+\usepackage{titlesec}
+\titlespacing\section      {0pt}{12pt}{0pt}
+\titlespacing\subsection   {0pt}{12pt}{0pt}
+\titlespacing\subsubsection{0pt}{12pt}{0pt}
+\setlength{\belowcaptionskip}{-10pt}
+\setlength{\belowdisplayskip}{-5pt} \setlength{\belowdisplayshortskip}{-5pt}
+\setlength{\abovedisplayskip}{-5pt} \setlength{\abovedisplayshortskip}{-5pt}
+
+
 \title{Improving Cantonese translation in existing multilingual translation models}
 
 \author{    
 Andreas H. H. Hansen\\
-  Department of Computer Science\\
-  Aarhus University\\
-  Aarhus, Denmark \\
-  \texttt{ahhh@cs.au.dk}
+  \texttt{ahhh@cs.au.dk}\\
 \And
 Lasse W. Edslev\\
-  Department of Computer Science\\
-  Aarhus University\\
-  Aarhus, Denmark \\
-  \texttt{lasse.edslev@cs.au.dk}
+  \texttt{lasse.edslev@cs.au.dk}\\
 \And
 Victor B. Poulsen\\
-  Department of Computer Science\\
-  Aarhus University\\
-  Aarhus, Denmark \\
-  \texttt{au705783@uni.au.dk}
+  \texttt{au705783@uni.au.dk}\\
 }
 
 

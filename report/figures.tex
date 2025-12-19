@@ -26,8 +26,8 @@
           %yticklabels=={$\pgfmathprintnumber[precision=0]{\tick}$},
           %syticklabels={0.4, 0.3, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0},
           %legend style={at={(0.5,-0.16)}, anchor=north, legend columns=2, font=\footnotesize, legend cell align={left}},
-          width=\textwidth*0.45,
-          height=\textwidth*0.45,
+          width=\textwidth*0.4,
+          height=\textwidth*0.4,
         ]
         \pgfplotsforeachungrouped \i in {0,...,#4} {
             \addplot table[x expr=\coordindex, y index=\i]
@@ -68,12 +68,12 @@
         ybar stacked,
         ymin=0,
         xtick=data,
-        xticklabels={Baseline,Token Swap,Fine-tuned,Token Swap Fine-tuned},
+        xticklabels={\tiny{Baseline},\tiny{Token Swap},\tiny{Fine-tuned},\tiny{Token Swap Fine-tuned}},
         x tick label style={rotate=45},
         legend style={at={(0.5, -0.2)}, anchor=north, legend columns=-1},
         bar width=12pt,
-        width=\textwidth*0.66,
-        height=\textwidth*0.8,
+        width=\textwidth,
+        height=\textwidth,
         ylabel={BLEURT},
         ymajorgrids=true,
         xmajorgrids=true,
@@ -88,23 +88,39 @@
   \end{tikzpicture}
 }
 
+\newcommand{\finetuningloss}{
+  \centering
+  \includegraphics[width=0.6\textwidth]{data_and_figs/finetuning_training_loss_plot.pdf}
+}
+
 \newcommand{\BLEURTtokenreplacementviolin}{
   \includegraphics[width=\textwidth]{data_and_figs/TS_BLEURT_violin.pdf}
 }
 
 \newcommand{\tokenreplacementexample}{
+  \def\arraystretch{1}%
+  \begin{tabular}{ | p {0.3\textwidth} | p {0.3\textwidth} | p {0.3\textwidth} | p {0.15\textwidth} | }
+    \hline
+    \textbf{\small{Source}}                                                                                     & \textbf{\small{Baseline}}                                                                         & \textbf{\small{Token Replacement}}                                                                     & \textbf{\small{$\Delta$ BLEURT}} \\
+    \hline
+    \tiny{Rohan was my sibling who always flew a kite at noon, even if it was cloudy.}                          & \tiny{The bridge is opened to the public at noon, and closed at midnight.}                        & \tiny{Rohan is my brother, and he flies kites at noon every day, even when the sky is dark.}           & \small{$\hphantom{-} 0.449$}     \\
+    \hline
+    \tiny{From 10 feet away you could tell the bottom of the boat was in rough shape.}                          & \tiny{It was very bad from 10 feet away.}                                                         & \tiny{The bottom was in poor condition and visible from a distance of 10 feet;}                        & \small{$\hphantom{-} 0.246$}     \\
+    \hline
+    \tiny{It includes a legend of a devil beast, a century-old family curse.}                                   & \tiny{It includes a legendary demon beast, a family curse that has lasted for hundreds of years.} & \tiny{He is the one who has been the master of the witchcraft for centuries.}                          & \small{$-0.380$}                 \\
+    \hline
+    \tiny{Bear in mind, constantly try to purchase silk plants, as they tend to appear like the genuine thing.} & \tiny{Remember, keep trying to buy silk plants because they look like real ones.}                 & \tiny{They are often used to make the plant's leaves and flowers look like they are actually flowers.} & \small{$-0.291$}                 \\
+    \hline
+  \end{tabular}
+}
+
+\newcommand{\allscores}{
   \def\arraystretch{1.3}%
-  \begin{tabular}{ | p {0.25\textwidth} | p {0.25\textwidth} | p {0.25\textwidth} | p {0.15\textwidth} | }
+  \begin{tabular}{| p {0.18\textwidth} | p {0.18\textwidth} | p {0.18\textwidth} | p {0.18\textwidth} | p {0.18\textwidth} |}
     \hline
-    \textbf{Source}                                                                                      & \textbf{Baseline}                                                                          & \textbf{Token Replacement}                                                                      & \textbf{$\Delta$ BLEURT} \\
+    95\% CI         & Baseline           & Token swap         & \textbf{Finetuned} & Finetuned TS       \\
     \hline
-    Rohan was my sibling who always flew a kite at noon, even if it was cloudy.                          & The bridge is opened to the public at noon, and closed at midnight.                        & Rohan is my brother, and he flies kites at noon every day, even when the sky is dark.           & 0.449354                 \\
-    \hline
-    From 10 feet away you could tell the bottom of the boat was in rough shape.                          & It was very bad from 10 feet away.                                                         & The bottom was in poor condition and visible from a distance of 10 feet;                        & 0.246233                 \\
-    \hline
-    It includes a legend of a devil beast, a century-old family curse.                                   & It includes a legendary demon beast, a family curse that has lasted for hundreds of years. & He is the one who has been the master of the witchcraft for centuries.                          & -0.379743                \\
-    \hline
-    Bear in mind, constantly try to purchase silk plants, as they tend to appear like the genuine thing. & Remember, keep trying to buy silk plants because they look like real ones.                 & They are often used to make the plant's leaves and flowers look like they are actually flowers. & -0.291243                \\
+    Test set BLEURT & $[0.6544, 0.7069]$ & $[0.6451, 0.6958]$ & $[0.7059, 0.7449]$ & $[0.6948, 0.7340]$ \\
     \hline
   \end{tabular}
 }

@@ -1,3 +1,4 @@
 \begin{abstract}
-    This is the abstract...
+
+    Cantonese is a low-resource language, i.e. it has received a very low amount of attention in NLP research compared to the number of speakers. Recently, high-quality datasets such as \textsc{SMOL} and \textsc{Gatitos} have been released, providing professionally translated parallel data on multiple levels (token-level, sentence-level, and document-level) for low-resource languages like Cantonese. This project explores how to utilize these datasets to improve the performance of a pre-trained multilingual translation model, \textsc{MADLAD}, on Cantonese to English translation tasks. For the token-level data we try to exploit the similarity to written Mandarin, on which models perform much better, by linearly transforming Cantonese embeddings to MADLAD's Mandarin embedding space, but this made no improvement in practice. For the sentence- and document-level data we show that using it to finetune MADLAD through backtranslation significantly improves model performance (6.46\% improvement in BLEURT score).
 \end{abstract}

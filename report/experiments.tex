@@ -8,16 +8,15 @@ Since the MADLAD model appears to have difficulty with sentences that contain wo
 \subsection{Embedding transform}
 From the promising results of the token replacement experiment \ref{results:token_replacement}, we believe that giving the model more knowledge of Cantonese characters could significantly improve its Cantonese translation ability.
 
-If we were to simply train a model on Gatitos token-level data it might get slightly better at some characters in the small Gatitos dataset, but we would not be able to generalize the model to become better at a significant amount of Cantonese vocabulary.
+If we were to simply train a model on \textsc{Gatitos} token-level data it might get slightly better at some characters in the small \textsc{Gatitos} dataset, but we would not be able to generalize the model to become better at a significant amount of Cantonese vocabulary.
 
-Instead we propose the following experiment: We train embeddings on a large corpus of unlabeled Cantonese data that is higher quality than the data MADLAD was trained on, hoping to get embeddings that better represent semantic similarity between Cantonese tokens than the embeddings of MADLAD do. We then perform an embedding transform from our Cantonese embeddings to MADLAD's Chinese embedding space using token-level translations from Gatitos. Specifically, we train a transformation matrix $W$ such that for a specific Cantonese-Chinese token embedding pair $E_{{canto}_i}, E_{{mandarin}_i}$ the embedding transformation $E_{{canto}_i} W$ approximates $E_{{mandarin}_i}$.
-
-We train by minimizing the following loss over $W$ with the \textsc{Adam}-algorithm\cite{kingma2017adammethodstochasticoptimization}.
-\begin{equation*}
+Instead we propose the following experiment: We train embeddings on a large corpus of unlabeled Cantonese data that is higher quality than the data MADLAD was trained on, hoping to get embeddings that better represent semantic similarity between Cantonese tokens than the embeddings of MADLAD do. We then perform an embedding transform from our Cantonese embeddings to MADLAD's Chinese embedding space using token-level translations from \textsc{Gatitos}, copying the approach by Mikolov, et. al\cite{mikolov2013exploitingsimilaritieslanguagesmachine}. Specifically, we train a transformation matrix $W$ such that for a specific Cantonese-Chinese token embedding pair $E_{{canto}_i}, E_{{mandarin}_i}$ the embedding transformation $E_{{canto}_i} W$ approximates $E_{{mandarin}_i}$, by minimizing the following loss over $W$ with the \textsc{Adam}-algorithm\cite{kingma2017adammethodstochasticoptimization}.
+\begin{align*}
     \sum_{i=1}^n  || E_{{canto}_i} W - E_{{mandarin}_i}||^2
-\end{equation*}
-For training the Cantonese embeddings we use the Monolingual Cantonese corpus by M. Dare, et. al. to train a Word2Vec\cite{mikolov2013efficientestimationwordrepresentations} model, where we separate words using the MADLAD tokenizer. We train both Word2Vec and GloVe embeddings.
+\end{align*}
+\textsc{Gatitos} is a many-to-many dataset of token-level translations, so for each one-to-many relation we put the target Mandarin embedding to be the average of the target token's embedding.
 
-\subsection{SMOL finetuning}
-As token replacement experiment showed an improvement in some cases, but a reduction in others, we assume that there it would be possible to learn wheter to use Cantonese-specific tokens or Mandarin tokens in a more nuanced way than simple token replacement. Therefore, we do back-translation finetuning for the MADLAD model on the SMOLSent and SMOLDoc English-Cantonese datasets.
-\todo{More details about fine tuning}
+For training the Cantonese embeddings we use the Monolingual Cantonese corpus by M. Dare, et. al. to train both a Word2Vec\cite{mikolov2013efficientestimationwordrepresentations} model and a GloVe\cite{pennington2014glove} model, where we separate words using the MADLAD tokenizer.
+
+\subsection{\textsc{SMOL} finetuning}
+With the disappointing embedding transform results (\ref{results:embedding_transform}), we hope to instead improve the models understanding of Cantonese by finetuning it on \textsc{SMOL} Cantonese->English backtranslation. With only the \textsc{SMOLSent} training set we do not have that much data, so we combine it with the \textsc{SMOLDoc} dataset by flattening the \textsc{SMOLDoc} sentence translation pairs. This approach gives us about 10x more data, while lowering the quality of the data slightly.

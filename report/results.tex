@@ -1,5 +1,7 @@
 \section{Results}
 \subsection{Token replacement}
+After performing token replacement and translating the resulting sentences with \textsc{MADLAD}, we calculate BLEURT scores. On average, the token replacement approach performs slightly worse than the baseline, with an average BLEURT score of $0.6704$ compared to the baseline's $0.6807$. We do however observe that the translation of many sentences improve significantly, both by BLEURT score and by our personally determined translation quality. At the same time, many sentences also see a significant drop in BLEURT score and translation quality. A few examples of this can be seen in the table \ref{table:tokenreplacementexample}.
+To check whether the ratio of Cantonese characters in the source sentence has an effect on the performance of the token replacement approach, we bin the sentences by their ratio of replaced characters and plot violin plots of the BLEURT scores for each bin in figure \ref{fig:bleurt_token_replacement}. We see no real trend in the results, with both the baseline and token replacement approach performing similarly across all bins, although there is a slight tendency for the token replacement approach to perform better on sentences with a higher ratio of Cantonese characters.
 \label{results:token_replacement}
 \begin{figure}[H]
     \BLEURTtokenreplacementviolin
@@ -10,11 +12,11 @@
 \begin{figure}[H]
     \tokenreplacementexample
     \label{table:tokenreplacementexample}
+    \caption{}
 \end{figure}
-After performing token replacement and translating the resulting sentences with \textsc{MADLAD}, we calculate BLEURT scores. On average, the token replacement approach performs slightly worse than the baseline, with an average BLEURT score of $0.6704$ compared to the baseline's $0.6807$. We do however observe that many sentences do see a significant improvement, both in BLEURT score and in translation quality as perceived by humans. At the same time, many sentences also see a significant drop in BLEURT score and translation quality. A few examples of this can be seen in the table \ref{table:tokenreplacementexample}.
-To check whether the ratio of Cantonese characters in the source sentence has an effect on the performance of the token replacement approach, we bin the sentences by their ratio of replaced characters and plot violin plots of the BLEURT scores for each bin in figure \ref{fig:bleurt_token_replacement}. We see no real trend in the results, with both the baseline and token replacement approach performing similarly across all bins, although there is a slight tendency for the token replacement approach to perform better on sentences with a higher ratio of Cantonese characters. \todo{Humans? Fix sentence}
 \subsection{Embedding transform}
-We train the GloVe embeddings using Stanford's GloVe implementation for $15$ epochs. We train the Word2Vec embeddings using Gensim's Word2Vec implementation for $6$ epochs.
+\label{results:embedding_transform}
+We train the GloVe embeddings using Stanford's GloVe implementation\footnote{https://nlp.stanford.edu/projects/glove/} for $15$ epochs. We train the Word2Vec embeddings using Gensim's Word2Vec implementation\footnote{https://radimrehurek.com/gensim/models/word2vec.html} for $6$ epochs.
 
 We train the embedding transformation matrix using stochastic gradient descent with a learning rate of $10^{-2}$ and a batch size of $64$ for $175$ epochs until it stops improving. A loss plot for training the transformation matrix for our GloVe embeddings can be seen on figure \ref{fig:glove_loss}.
 \begin{figure}[H]
@@ -23,17 +25,30 @@ We train the embedding transformation matrix using stochastic gradient descent w
     \caption{Plot of GloVe transformation matrix loss during training}
     \label{fig:glove_loss}
 \end{figure}
-The transformed embeddings for both Word2Vec and GloVe are however quite bad and generate seemingly random output, although it is still coherent speech. This leads us to believe that there is no approximate linear transformation between the Word2Vec / GloVe embeddings and the MADLAD embeddings which have been trained through masked language modeling.
+The transformed embeddings for both Word2Vec and GloVe are however quite bad and generate seemingly random output, although it is still mostly coherent speech. This leads us to believe that there is no approximate linear transformation between the Word2Vec / GloVe embeddings and the MADLAD embeddings which have been trained through masked language modeling. Here are two example outputs: \\
+\begin{tabular}{m\textwidth}
+    Original:                                                                                                                                                                                                                            \\
+    \small{As a reminder, this company launched a 34-inch curved gaming monitor last October.}                                                                                                                                           \\
+    Transformed:                                                                                                                                                                                                                         \\
+    \small{The company is now in the process of launching a new product, the 10-month-old baby-size baby-sized baby-sized baby-sized baby-sized baby-sized baby-sized baby-sized baby-sized baby-sized baby-sized baby-sized baby-sized} \\
+    Original:                                                                                                                                                                                                                            \\
+    \small{Rohan was my sibling who always flew a kite at noon, even if it was cloudy.}                                                                                                                                                  \\
+    Transformed:                                                                                                                                                                                                                         \\
+    \small{I'm a little bit shy, but I'm not alone.}
+\end{tabular}
 
-
-\subsection{SMOL finetuning}
-We finetune with a learning rate of $5 \cdot 10^{-5}$ and a batch size of $8$ with a weight decay of $0.01$ using a A100 GPU on Google Colab. After $1$ epoch ($784$ steps) the model starts to overfit as can be seen on figure \ref{fig:bleurt_scores}, so we use a checkpoint of the model saved after the first epoch.
-\todo{add loss fig}
+\subsection{\textsc{SMOL} finetuning}
+We finetune with a learning rate of $5 \cdot 10^{-5}$ and a batch size of $8$ with a weight decay of $0.01$ using a A100 GPU on Google Colab. After $1$ epoch ($784$ steps) the model starts to overfit, and no longer improves on the test set, as can be seen on figure \ref{fig:finetuning_loss}, so we use a checkpoint of the model saved after the first epoch.
 
 
 
 \begin{figure}[H]
-    \BLEURTresults
-    %\caption{BLEURT scores}
-    \label{fig:bleurt_scores}
+    \finetuningloss
+    \label{fig:finetuning_loss}
+    \caption{Training loss during finetuning on \textsc{SMOLSent} + \textsc{SMOLDoc}. The vertical line indicates the end of the first epoch where training was stopped.}
+\end{figure}
+
+\begin{figure}
+    \allscores
+    \caption{Confidence interval for BLEURT Scores on the test set. We calculate the confidence intervals with the $t$ distribution with degrees of freedom equal to the length of our test set minus one. We use Bessel's correction for the sample standard deviation. }
 \end{figure}

@@ -1,11 +1,16 @@
 \section{Discussion}
 
 \subsection{Limitations}
-In the embedding transform experiment we may have achieved better results if we had pretrained a T5 model on our embeddings using masked sentence modelling, like MADLAD had used.
-\todo{DATA AMOUNT}
+Since the \textsc{Gatitos} dataset consists of many-to-many translations, and in some cases there is loss of information (for example translation from a gendered pronoun to non-gendered pronoun). Thus our naive approach of taking all translations from \textsc{Gatitos} may have an adverse effect on performance.
 
+The embedding transform experiment had bad results, we believe that in addition to the above point this was because the linear relations between vocabulary in embedding space learnt by our models (Word2Vec \& GloVe) differ from the linear relations between vocabulary in MADLAD's embeddings, due to MADLAD learning its embeddings through a significantly different method (masked language modelling). We therefore also believe that this approach could have had better results if we had pretrained our embeddings in the same way as MADLAD did, using masked language modelling on a T5 model. Unfortunately in this project we do not believe we have the required resources to perform such an requirement.
+
+For multiple of our experiments, we believe that the limited size of the \textsc{Gatitos} and \textsc{Smol} datasets have been the main bottleneck for achieving better performance. For example, in the token swap experiment, see figure~\ref{fig:bleurt_token_replacement}, where the sizes of the bins have been listed. We see that in total our test set only contains 87 sentences. For a NLP task, where the input space is very large, this is a very small number of samples to draw conclusions from.
+
+Both our training dataset and our test datasets are backtranslation datasets, we therefore have not measured the proficiency of our model to do translation in the original direction.
 \subsection{Other methods}
-Non-linear transformations of the embeddings, such as applying ReLU or sigmoid activation functions... \todo{Why we did not try this, too likely to overfit given the size of Gatitos}
+We could also have performed non-linear transformations of the embeddings, for example by using ReLU or sigmoid activations in a mutlilayer neural network. We did not do this because the point of the embedding transformation is to keep all the linear relations between our vocabulary in embedding space. Furthermore, by increasing model complexity we will very likely to overfit as there will be significantly more parameters in our model than datapoints in the training set.
 
 \subsection{Conclusion}
-\todo{What did we learn?}
+We have shown a way of utilizing specific aspects of the SMOL dataset (sentence-level and document-level) to improve a trained models translation ability, resulting in an improvement in mean BLEURT score of 0.044 (6.46\%). We have also proposed a way of improving the embedding of a trained models using token-level data, and although we were not able to achieve an improvement with this approach in this project, we have proposed a higher-resource method that could work.
+
