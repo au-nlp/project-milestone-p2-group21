@@ -49,5 +49,6 @@ An overview of the experiments can be found in the file `main.ipybn`
 ## Individual Contributions
 ### Victor
 ### Lasse
+Found GPU compute resources, finetuned MADLAD model, did inference on different models (original, finetuned and with transformation matrix) to obtain baselines on original vs tokenswapped data, web scraping.
 ### Andreas
 Theory and model exploration, experiment evaluation, data processing, and report writing.
