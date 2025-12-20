@@ -11,7 +11,7 @@ To check whether the ratio of Cantonese characters in the source sentence has an
 
 \begin{figure}[H]
     \tokenreplacementexample
-    \caption{}
+    \caption{Baseline and token replacement back-translations from Cantonese to English. }
     \label{table:tokenreplacementexample}
 \end{figure}
 \subsection{Embedding transform}
@@ -25,7 +25,7 @@ We train the embedding transformation matrix using stochastic gradient descent w
     \caption{Plot of GloVe transformation matrix loss during training}
     \label{fig:glove_loss}
 \end{figure}
-The transformed embeddings for both Word2Vec and GloVe are however quite bad and generate seemingly random output, although it is still mostly coherent speech. This leads us to believe that there is no approximate linear transformation between the Word2Vec / GloVe embeddings and the MADLAD embeddings which have been trained through masked language modeling. Two example outputs can be seen on figure \ref{fig:embedding_examples}.
+The transformed embeddings for both Word2Vec and GloVe are however quite bad and generate seemingly random output not related to the sentence being translated, although it is still mostly coherent speech. This leads us to believe that there is no approximate linear transformation between the Word2Vec / GloVe embeddings and the MADLAD embeddings which have been trained through masked language modeling. Two example outputs can be seen on figure \ref{fig:embedding_examples}.
 
 
 \begin{figure}[H]
