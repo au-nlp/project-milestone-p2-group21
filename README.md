@@ -48,6 +48,7 @@ An overview of the experiments can be found in the file `main.ipybn`
 
 ## Individual Contributions
 ### Victor
+Worked on initial exploration of MADLAD and state of the art cantonese translation models, worked on all experiments and writing the report. 
 ### Lasse
 Found GPU compute resources, finetuned MADLAD model, did inference on different models (original, finetuned and with transformation matrix) to obtain baselines on original vs tokenswapped data, web scraping.
 ### Andreas
