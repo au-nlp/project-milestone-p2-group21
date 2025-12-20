@@ -50,3 +50,4 @@ An overview of the experiments can be found in the file `main.ipybn`
 ### Victor
 ### Lasse
 ### Andreas
+Theory and model exploration, experiment evaluation, data processing, and report writing.
