@@ -2,23 +2,27 @@
 
 # Improving Cantonese translation in existing multilingual translation models
 ## Abstract
-Most NLP research focusses on English and other "high resource" languages. This means that "low ressource" often show much worse results in all NLP tasks. The SMOL dataset aims to lessen this difference by providing high quality sentence- and document-level translations for many low ressource languages. This projects uses SMOL and Gatitos and focuses on Cantonese, which is the second most spoken Sinitic language. Despite having more than 85 million speakers it is severely underrepresented in the NLP field. We attempt to analyse shortcommings of existing models and finetune these to relieve the shortcommings. Our initial analysis shows that doing a simple token replacement of Cantonese characters with GATITOS and then translating with existing models yields better results. Based on this, we believe that various embedding-transformation approaches will result in significant Cantonese-translation improvement for existing models.  
+Cantonese is a low-resource language, i.e. it has received a very low amount of attention in NLP research compared to the number of speakers. Recently, high-quality datasets such as SMOL and Gatitos have been released, providing professionally translated parallel data on multiple levels (token-level, sentence-level, and document-level) for low-resource languages like Cantonese. This project explores how to utilize these datasets to improve the performance of a pre-trained multilingual translation model, MADLAD, on Cantonese to English translation tasks. For the token-level data we try to exploit the similarity to written Mandarin, on which models perform much better, by linearly transforming Cantonese embeddings to MADLAD's Mandarin embedding space, but this made no improvement in practice. For the sentence- and document-level data we show that using it to finetune MADLAD through backtranslation significantly improves model performance (6.46% improvement in BLEURT score).
+
+
 ## Contributions
-Our contributions are:
-* A way to efficiently utilize Gatitos' character level translations, SMOLSent sentence level translations and SMOLDoc document level translations to train Cantonese -> English translation models.
-* Demonstrating that Cantonese-only tokens degrade the performance of models on Cantonese-translation tasks, and token- and embedding-transformation approaches that significantly improve performance in these cases.
-* Showing that using the SMOL dataset to finetune Cantonese -> English models improves translation performance. 
-## Potential extra datasets
+This project
+- Demonstrates that Cantonese-only tokens degrade the performance of models on Cantonese-translation tasks, and exploring how token- and embedding-transformation approaches improve performance in these cases.
+- Gives a method for utilizing Gatitos' character level translations, SMOLSent sentence level translations and SMOLDoc document level translations to train Cantonese -> English translation models.
+- Shows that using the SMOL dataset to finetune Cantonese -> English models improves translation performance.
+
+## Additional Datasets
 In order to train word2vec embeddings for Cantonese we use unlabelled Cantonese data. For this, we use the monolingual Cantonese corpus compiled by M. Dare, et. al. that sources data from other monolingual datasets, Wikipedia, Youtube Subtitles, Instagram and Cantonese blogs. The dataset consists of 923084 unlabelled sentences with spaces inserted between tokens. Without inserted spaces, the average length of sentences in the dataset is 33 characters, the median length is 25 characters and the max length is 1433 characters. The dataset appears to be much higher quality than other publicly available monolingual datasets, such as the internet-scraped MADLAD which contains lots of english text, website names, dates, urls and general website information. Two randomly selected sentences from the dataset can be seen below: 
 
       有人 用 毛 代 角 。
 
       第二 階段 投票 將會 喺 下 周 一 至 周 五 舉行 ， 從 最後 五 強中 票選 「 我 最喜愛 的 男 / 女 / 組合 」 ， 結果 將會 喺 1 月 1 號 嘅 頒獎禮 公佈 。
 
+Also, we use the Gatitos dataset, also from Google. This dataset contains token level for translations 179 pairs of languages, including 4.2k rows of Cantonese to Mandarin character translations.
 
 
 ## Methods
-For initial benchmarking of the state of the art we scrape SMOLSent translations from Google & Bing Cantonese and Simplified/Traditional Chinese models. For initial evaluation of translation quality we use BLEURT as an evaluation proxy of human assessment. For in depth analysis we do manual evaluation of the English-outcome translations. 
+For initial benchmarking of the state of the art we scrape SMOLSent translations from Google & Bing Cantonese and Simplified/Traditional Chinese models. For initial evaluation of translation quality we use BLEURT as an evaluation proxy of human assessment. For in depth analysis we do manual evaluation of the English-outcome translations.
 
 Since SMOLSent and SMOLDoc consists of English -> Cantonese translations we utilize backtranslation, translating from the target to the source, in order to train Cantonese -> English models. 
 
@@ -39,19 +43,10 @@ Since SMOLSent and SMOLDoc consists of English -> Cantonese translations we util
 4. Do back-translation finetuning on SMOLSent English -> Cantonese and SMOLDoc English -> Cantonese.
 5. Potentially expand approach to other low resource languages.
 
-## References
-      SMOL: Professionally translated parallel data for 115 under-represented languages
-      Isaac Caswell and Elizabeth Nielsen and Jiaming Luo and Colin Cherry and Geza Kovacs and Hadar Shemtov and Partha Talukdar and Dinesh Tewari and Baba Mamadi Diane and Djibrila Diane and Solo Farabado Cissé and Koulako Moussa Doumbouya and Edoardo Ferrante and Alessandro Guasoni and Christopher Homan and Mamadou K. Keita and Sudhamoy DebBarma and Ali Kuzhuget and David Anugraha and Muhammad Ravi Shulthan Habibi and Genta Indra Winata and Anthony Munthali and Sina Ahmadi and Andrei Chemyshev and Mingfei Lau and Jonathan Eng
-      https://arxiv.org/abs/2502.12301 
+## Codebase
+An overview of the experiments can be found in the file `main.ipybn`
 
-      Unsupervised Mandarin-Cantonese Machine Translation
-      Megan Dare and Valentina Fajardo Diaz and Averie Ho Zoen So and Yifan Wang and Shibingfeng Zhang
-      https://arxiv.org/abs/2301.03971  
-
-      MADLAD-400: A Multilingual And Document-Level Large Audited Dataset
-      Sneha Kudugunta and Isaac Caswell and Biao Zhang and Xavier Garcia and Christopher A. Choquette-Choo and Katherine Lee and Derrick Xin and Aditya Kusupati and Romi Stella and Ankur Bapna and Orhan Firat  
-      https://arxiv.org/abs/2309.04662
-## Appendix
-### Repo org
-main.ipybn contains data exploration and benchmarks of existing models, both traditional and a T5 based model.
-### Questions
+## Individual Contributions
+### Victor
+### Lasse
+### Andreas
