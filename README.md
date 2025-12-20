@@ -7,7 +7,7 @@ Cantonese is a low-resource language, i.e. it has received a very low amount of 
 
 ## Contributions
 This project
-- Demonstrates that Cantonese-only tokens degrade the performance of models on Cantonese-translation tasks, and exploring how token- and embedding-transformation approaches improve performance in these cases.
+- Demonstrates that Cantonese-only tokens degrade the performance of models on Cantonese-translation tasks, and explores how token- and embedding-transformation can improve performance in these cases.
 - Gives a method for utilizing Gatitos' character level translations, SMOLSent sentence level translations and SMOLDoc document level translations to train Cantonese -> English translation models.
 - Shows that using the SMOL dataset to finetune Cantonese -> English models improves translation performance.
 
